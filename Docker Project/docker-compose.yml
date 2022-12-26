@@ -1,0 +1,21 @@
+version: '3'
+services:
+    postgres:
+        image: 'postgres:latest'
+        environment:
+      	    - POSTGRES_PASSWORD=mandal1
+            - POSTGRES_USER=postgres
+            - POSTGRES_DB=Simple_blog_api
+   
+    api:
+        depends_on: 
+           -postgres:
+        image:mandal1/Simple_blog_api_new
+        ports:
+          - '3000:3000'
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=mandal1
+            - POSTGRES_DB=Simple_blog_api
+            - POSTGRES_HOST=postgres
+            - POSTGRES_PORT=5432

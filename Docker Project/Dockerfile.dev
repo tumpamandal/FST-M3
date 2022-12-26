@@ -1,0 +1,17 @@
+#Base image
+FROM node:16-alpine
+
+#Change working dir
+WORKDIR /usr/app
+
+#copy package into container
+COPY package.json ./
+
+#install dependencies
+RUN npm install
+
+#copy rets files into container
+COPY . .
+
+#Run
+CMD["npm", "run", "server"]
